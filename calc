@@ -1,0 +1,41 @@
+#! /usr/bin/perl
+
+use Math::Trig;
+
+sub dms2deg{
+    my($deg, $min, $sec) = @_;
+    return ((($sec/60) + $min) / 60) + $deg;
+}
+
+$0 =~ s'.*/'';
+if (0 > $#ARGV) {
+    print STDERR "usage: ", $0, " [-x|-o|+FORMAT] expression\n";
+    exit(2);
+}
+
+if ($ARGV[0] eq "-x") {
+    $format="0x%X\n";
+    shift;
+    $val = eval("@ARGV");
+}
+elsif ($ARGV[0] eq "-o") {
+    $format="0%o\n";
+    shift;
+    $val = eval("@ARGV");
+}
+elsif (substr($ARGV[0],0,1) eq "+") {
+    $format=substr($ARGV[0],1) . "\n";
+    shift;
+    $val = eval("@ARGV");
+}
+else {
+    $val = eval("@ARGV");
+    if ($val-int($val) != 0 || $val>2**31-1) {
+	$format="%f\n";
+    }
+    else {
+	$format="%d\n";
+    }
+}
+
+printf $format, $val;
