@@ -24,6 +24,11 @@ elsif ($ARGV[0] eq "-o") {
     shift;
     $val = eval("@ARGV");
 }
+elsif ($ARGV[0] eq "-c") {
+    $format="%c\n";
+    shift;
+    $val = eval("@ARGV");
+}
 elsif (substr($ARGV[0],0,1) eq "+") {
     $format=substr($ARGV[0],1) . "\n";
     shift;
