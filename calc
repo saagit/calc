@@ -30,7 +30,7 @@ elsif ($ARGV[0] eq "-c") {
     $val = eval("@ARGV");
 }
 elsif (substr($ARGV[0],0,1) eq "+") {
-    $format=substr($ARGV[0],1) . "\n";
+    $format=substr($ARGV[0],1);
     shift;
     $val = eval("@ARGV");
 }
