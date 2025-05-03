@@ -10,7 +10,7 @@ sub dms2deg{
 
 $0 =~ s'.*/'';
 if (0 > $#ARGV) {
-    print STDERR "usage: ", $0, " [-x|-o|+FORMAT] expression\n";
+    print STDERR "usage: ", $0, " [-x|-o|-c|+FORMAT] expression\n";
     exit(2);
 }
 
